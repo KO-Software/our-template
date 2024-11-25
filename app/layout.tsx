@@ -6,8 +6,8 @@ import { ThemeProvider } from '@/components/layout/theme-provider';
 import { PropsWithChildren } from 'react';
 import './globals.css';
 
-const title = 'Probie.ai - Hire Smarter with Zero Risk';
-const description = 'Probie.ai helps startups trial talent for short-term projects, giving you more than a 10-hour interview to make hiring decisions.';
+const title = 'probie.ai - hire smarter with zero risk';
+const description = 'probie.ai is a platform that automates recruiting pipeline filtering using real tickets from your company';
 
 export const metadata: Metadata = {
   title,

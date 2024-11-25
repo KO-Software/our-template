@@ -67,7 +67,7 @@ export const ContactSection = () => {
   }
 
   return (
-    <section id="contact" className="container py-16 md:py-24">
+    <section id="contact" className="container py-24 md:py-36">
       <div className="max-w-md mx-auto text-center">
         <h2 className="text-lg text-primary mb-2 tracking-wider">
           contact
@@ -116,7 +116,7 @@ export const ContactSection = () => {
                         >
                           <FormControl>
                             <SelectTrigger>
-                              <SelectValue placeholder="Select a subject" />
+                              <SelectValue placeholder="select a subject" />
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>

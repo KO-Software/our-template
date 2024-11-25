@@ -13,40 +13,40 @@ const benefitList: BenefitsProps[] = [
     icon: "Blocks",
     title: "reduce hiring risks",
     description:
-      "trial periods let you evaluate candidates based on actual work performance, not theoretical knowledge. see how they tackle real challenges, collaborate with your team, and deliver results before making a full-time commitment.",
+      "the cost of a bad hire is devastating, and traditional interviews are becoming less and less effective.",
   },
   {
     icon: "Clock",
     title: "save time",
     description:
-      "streamline your hiring process by evaluating candidates through actual work performance rather than lengthy interviews.",
+      "current recruiting tools field lot of candidates, but you're the one spending hours reviewing them.",
   },
   {
     icon: "Users",
     title: "flexible staffing",
     description:
-      "easily scale your team up or down based on project needs, maintaining agility in your startup's growth.",
+      "your team scales with you, transitioning contractors to full-time roles as the team grows.",
   },
   {
     icon: "Target",
-    title: "find the right talent",
+    title: "solve real problems",
     description:
-      "assess candidates' skills, work ethic, and cultural fit through hands-on projects tailored to your startup's needs.",
+      "evaluate candidates based on actual tickets their role would be responsible for.",
   },
 ];
 
 const BenefitsSection = () => {
   return (
-    <section id="benefits" className="container py-24 sm:py-32">
+    <section id="benefits" className="container py-10 sm:py-12">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
           <h2 className="text-lg text-primary mb-2 tracking-wider lowercase-text">benefits</h2>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4 lowercase-text gradient-text">
-            your shortcut to startup success
+            your shortcut to scalable talent
           </h2>
           <p className="text-xl text-muted-foreground mb-8 lowercase-text minimalist">
-          probie is a platform that manages talent filtering for startups through real world projects instead of in-house "cookie cutter" technical interviews.
+          probie.ai is a platform that automates recruiting pipeline filtering for startups using real projects.
           </p>
         </div>
 

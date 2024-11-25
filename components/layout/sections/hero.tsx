@@ -14,7 +14,7 @@ const HeroSection = () => {
             <span className="mr-2 text-primary">
               <Badge>new</Badge>
             </span>
-            <span>waitlist is open</span>
+            <span>waitlist for probie.ai is open</span>
           </Badge>
 
           <div className="max-w-screen-md mx-auto text-center text-4xl md:text-6xl font-bold">
@@ -34,7 +34,7 @@ const HeroSection = () => {
             variant="secondary"
             className="w-5/6 md:w-1/4 font-bold modern-component"
           >
-            <Link href="#how-it-works">
+            <Link href="#contact">
               i'm interested
             </Link>
           </Button>
