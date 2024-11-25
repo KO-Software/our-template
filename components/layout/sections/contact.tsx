@@ -58,11 +58,11 @@ export const ContactSection = () => {
 
       if (error) throw error;
 
-      setSubmitStatus('Message sent successfully!');
+      setSubmitStatus('thanks! we will be in touch soon.');
       form.reset();
     } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('An error occurred. Please try again.');
+      console.error('whoopsie:', error);
+      setSubmitStatus('reach out to contact@probie.ai');
     }
   }
 

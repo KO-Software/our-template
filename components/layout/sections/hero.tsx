@@ -7,7 +7,7 @@ import Link from "next/link";
 const HeroSection = () => {
 
   return (
-    <section className="container w-full bg-background text-foreground">
+    <section className="container w-full bg-black text-foreground">
       <div className="grid place-items-center lg:max-w-screen-xl gap-8 mx-auto py-16 md:py-24">
         <div className="text-center space-y-8">
           <Badge variant="outline" className="text-sm py-2">
