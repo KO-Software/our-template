@@ -72,7 +72,7 @@ export const ContactSection = () => {
         <h2 className="text-lg text-primary mb-2 tracking-wider">
           contact
         </h2>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">interested in chatting?</h2>
+        <h2 className="text-3xl md:text-4xl font-bold mb-4">want to chat?</h2>
         <p className="mb-8 text-muted-foreground">
           fill this out and we'll reach out.
         </p>
