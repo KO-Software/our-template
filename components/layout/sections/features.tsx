@@ -10,40 +10,40 @@ interface FeaturesProps {
 
 const featureList: FeaturesProps[] = [
   {
-    icon: "TabletSmartphone",
-    title: "Mobile Friendly",
+    icon: "Users",
+    title: "talent matching",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, consectetur.",
+      "our ai-powered system matches startups with the most suitable candidates for short-term projects.",
   },
   {
-    icon: "BadgeCheck",
-    title: "Social Proof",
+    icon: "Briefcase",
+    title: "real-world trials",
     description:
-      "Lorem ipsum dolor sit amet consectetur. Natus consectetur, odio ea accusamus aperiam.",
+      "evaluate potential hires through actual project work, giving you insights beyond traditional interviews.",
   },
   {
-    icon: "Goal",
-    title: "Targeted Content",
+    icon: "Shield",
+    title: "risk mitigation",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. odio ea accusamus aperiam.",
+      "reduce hiring risks by testing candidates' skills and cultural fit before making long-term commitments.",
   },
   {
-    icon: "PictureInPicture",
-    title: "Strong Visuals",
+    icon: "Clock",
+    title: "time-efficient",
     description:
-      "Lorem elit. A odio velit cum aliquam. Natus consectetur dolores, odio ea accusamus aperiam.",
+      "streamline your hiring process and save time by focusing on pre-vetted candidates who have proven their abilities.",
   },
   {
-    icon: "MousePointerClick",
-    title: "Clear CTA",
+    icon: "TrendingUp",
+    title: "scalable staffing",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing. odio ea accusamus consectetur.",
+      "easily scale your team up or down based on project needs, maintaining agility in your startup's growth.",
   },
   {
-    icon: "Newspaper",
-    title: "Clear Headline",
+    icon: "Zap",
+    title: "performance insights",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur.",
+      "gain valuable data on candidate performance during trials to make informed hiring decisions.",
   },
 ];
 

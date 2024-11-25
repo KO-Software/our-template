@@ -11,44 +11,42 @@ interface BenefitsProps {
 const benefitList: BenefitsProps[] = [
   {
     icon: "Blocks",
-    title: "Build Brand Trust",
+    title: "reduce hiring risks",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "trial periods let you evaluate candidates based on actual work performance, not theoretical knowledge. see how they tackle real challenges, collaborate with your team, and deliver results before making a full-time commitment.",
   },
   {
-    icon: "LineChart",
-    title: "More Leads",
+    icon: "Clock",
+    title: "save time",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, natus consectetur.",
+      "streamline your hiring process by evaluating candidates through actual work performance rather than lengthy interviews.",
   },
   {
-    icon: "Wallet",
-    title: "Higher Conversions",
+    icon: "Users",
+    title: "flexible staffing",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus consectetur. A odio velit cum aliquam",
+      "easily scale your team up or down based on project needs, maintaining agility in your startup's growth.",
   },
   {
-    icon: "Sparkle",
-    title: "Test Marketing Ideas",
+    icon: "Target",
+    title: "find the right talent",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+      "assess candidates' skills, work ethic, and cultural fit through hands-on projects tailored to your startup's needs.",
   },
 ];
 
-export const BenefitsSection = () => {
+const BenefitsSection = () => {
   return (
     <section id="benefits" className="container py-24 sm:py-32">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
-          <h2 className="text-lg text-primary mb-2 tracking-wider">Benefits</h2>
+          <h2 className="text-lg text-primary mb-2 tracking-wider lowercase-text">benefits</h2>
 
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Shortcut to Success
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 lowercase-text gradient-text">
+            your shortcut to startup success
           </h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            ducimus reprehenderit architecto rerum similique facere odit
-            deleniti necessitatibus quo quae.
+          <p className="text-xl text-muted-foreground mb-8 lowercase-text minimalist">
+          probie is a platform that manages talent filtering for startups through real world projects instead of in-house "cookie cutter" technical interviews.
           </p>
         </div>
 
@@ -56,7 +54,7 @@ export const BenefitsSection = () => {
           {benefitList.map(({ icon, title, description }, index) => (
             <Card
               key={title}
-              className="bg-muted/50 dark:bg-card hover:bg-background transition-all delay-75 group/number"
+              className="bg-muted/50 dark:bg-card hover:bg-background transition-all delay-75 group/number modern-component"
             >
               <CardHeader>
                 <div className="flex justify-between">
@@ -71,10 +69,10 @@ export const BenefitsSection = () => {
                   </span>
                 </div>
 
-                <CardTitle>{title}</CardTitle>
+                <CardTitle className="lowercase-text gradient-text">{title}</CardTitle>
               </CardHeader>
 
-              <CardContent className="text-muted-foreground">
+              <CardContent className="text-muted-foreground lowercase-text minimalist">
                 {description}
               </CardContent>
             </Card>
@@ -84,3 +82,5 @@ export const BenefitsSection = () => {
     </section>
   );
 };
+
+export default BenefitsSection;

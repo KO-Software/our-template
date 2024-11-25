@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -9,6 +13,8 @@ import {
 } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
+const stripePromise = loadStripe(process.env.NEXT__STRIPE_PUBLISHABLE_KEY!);
+
 enum PopularPlan {
   NO = 0,
   YES = 1,
@@ -17,118 +23,137 @@ enum PopularPlan {
 interface PlanProps {
   title: string;
   popular: PopularPlan;
-  price: number;
+  price: string;
   description: string;
   buttonText: string;
   benefitList: string[];
+  stripeProductId: string;
 }
 
 const plans: PlanProps[] = [
   {
-    title: "Free",
-    popular: 0,
-    price: 0,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Start Free Trial",
+    title: "starter",
+    popular: PopularPlan.NO,
+    price: "free",
+    description: "try out our service at no cost",
+    buttonText: "start now",
     benefitList: [
-      "1 team member",
-      "1 GB storage",
-      "Upto 2 pages",
-      "Community support",
-      "AI assistance",
+      "1 project",
+      "5 team members",
+      "2 gb storage",
+      "community support",
+      "7-day access",
     ],
+    stripeProductId: "price_free_trial",
   },
   {
-    title: "Premium",
-    popular: 1,
-    price: 45,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Get starterd",
+    title: "growth",
+    popular: PopularPlan.YES,
+    price: "$49",
+    description: "scale up with more resources",
+    buttonText: "upgrade",
     benefitList: [
-      "4 team member",
-      "8 GB storage",
-      "Upto 6 pages",
-      "Priority support",
-      "AI assistance",
+      "10 projects",
+      "20 team members",
+      "20 gb storage",
+      "priority support",
+      "14-day trial",
     ],
+    stripeProductId: "price_growth",
   },
   {
-    title: "Enterprise",
-    popular: 0,
-    price: 120,
-    description:
-      "Lorem ipsum dolor sit, amet ipsum consectetur adipisicing elit.",
-    buttonText: "Contact US",
+    title: "enterprise",
+    popular: PopularPlan.NO,
+    price: "custom",
+    description: "tailored solutions for large teams",
+    buttonText: "get in touch",
     benefitList: [
-      "10 team member",
-      "20 GB storage",
-      "Upto 10 pages",
-      "Phone & email support",
-      "AI assistance",
+      "unlimited projects",
+      "unlimited team members",
+      "unlimited storage",
+      "dedicated support",
+      "custom setup",
     ],
+    stripeProductId: "price_enterprise",
   },
 ];
 
 export const PricingSection = () => {
+  const [loading, setLoading] = useState(false);
+
+  const handleSubscription = async (priceId: string) => {
+    setLoading(true);
+    try {
+      const stripe = await stripePromise;
+      if (!stripe) throw new Error('Stripe failed to initialize.');
+
+      const { error } = await stripe.redirectToCheckout({
+        lineItems: [{ price: priceId, quantity: 1 }],
+        mode: 'subscription',
+        successUrl: `${window.location.origin}/success`,
+        cancelUrl: `${window.location.origin}/canceled`,
+      });
+
+      if (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
-    <section className="container py-24 sm:py-32">
-      <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-        Pricing
+    <section className="container py-24 sm:py-32 bg-background text-foreground">
+      <h2 className="text-lg text-primary text-center mb-2 tracking-wider lowercase">
+        pricing
       </h2>
-
-      <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
-        Get unlimitted access
-      </h2>
-
-      <h3 className="md:w-1/2 mx-auto text-xl text-center text-muted-foreground pb-14">
-        Lorem ipsum dolor sit amet consectetur adipisicing reiciendis.
+      <h3 className="text-3xl md:text-4xl font-bold text-center mb-4 lowercase bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+        select your plan
       </h3>
+      <p className="text-xl text-muted-foreground text-center mb-8 lowercase">
+        options for teams of all sizes
+      </p>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-4">
         {plans.map(
-          ({ title, popular, price, description, buttonText, benefitList }) => (
+          ({ title, popular, price, description, buttonText, benefitList, stripeProductId }) => (
             <Card
               key={title}
-              className={
+              className={`modern-component ${
                 popular === PopularPlan?.YES
-                  ? "drop-shadow-xl shadow-black/10 dark:shadow-white/10 border-[1.5px] border-primary lg:scale-[1.1]"
-                  : ""
-              }
+                  ? "border-primary shadow-lg"
+                  : "border-muted"
+              }`}
             >
               <CardHeader>
-                <CardTitle className="pb-2">{title}</CardTitle>
-
-                <CardDescription className="pb-4">
+                <CardTitle className="text-2xl font-bold lowercase">{title}</CardTitle>
+                <CardDescription className="text-lg lowercase">
                   {description}
                 </CardDescription>
-
-                <div>
-                  <span className="text-3xl font-bold">${price}</span>
-                  <span className="text-muted-foreground"> /month</span>
-                </div>
               </CardHeader>
-
-              <CardContent className="flex">
-                <div className="space-y-4">
+              <CardContent>
+                <p className="text-4xl font-bold mb-4 lowercase">{price}</p>
+                <ul className="space-y-2">
                   {benefitList.map((benefit) => (
-                    <span key={benefit} className="flex">
-                      <Check className="text-primary mr-2" />
-                      <h3>{benefit}</h3>
-                    </span>
+                    <li key={benefit} className="flex items-center text-sm lowercase">
+                      <Check className="text-primary mr-2 size-4" />
+                      {benefit}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </CardContent>
-
               <CardFooter>
                 <Button
-                  variant={
-                    popular === PopularPlan?.YES ? "default" : "secondary"
-                  }
-                  className="w-full"
+                  variant={popular === PopularPlan?.YES ? "default" : "secondary"}
+                  className="w-full text-lg lowercase modern-component"
+                  onClick={() => handleSubscription(stripeProductId)}
+                  disabled={loading}
                 >
-                  {buttonText}
+                  {loading ? 'Processing...' : buttonText}
                 </Button>
               </CardFooter>
             </Card>

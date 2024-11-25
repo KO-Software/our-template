@@ -1,6 +1,6 @@
 'use client';
 
-import Button from '@/components/ui/Button';
+import { Button } from '@/components/ui/button-with-loading';
 import React from 'react';
 import Link from 'next/link';
 import { signUp } from '@/utils/auth-helpers/server';
@@ -8,7 +8,6 @@ import { handleRequest } from '@/utils/auth-helpers/client';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-// Define prop type with allowEmail boolean
 interface SignUpProps {
   allowEmail: boolean;
   redirectMethod: string;
@@ -55,7 +54,7 @@ export default function SignUp({ allowEmail, redirectMethod }: SignUpProps) {
             />
           </div>
           <Button
-            variant="slim"
+            variant="default"
             type="submit"
             className="mt-1"
             loading={isSubmitting}
