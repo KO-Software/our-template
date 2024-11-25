@@ -31,7 +31,7 @@ const HeroSection = () => {
 
           <Button
             asChild
-            variant="secondary"
+            variant="default"
             className="w-5/6 md:w-1/4 font-bold modern-component"
           >
             <Link href="#contact">
